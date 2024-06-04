@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        *{
+            margin: 0px;
+        }
+        h1{
+            background-color: black;
+            color:white;
+            text-align: center;
+            height: 50px;
+            font-size: 45px;
+            font-family: 'Courier New', Courier, monospace;
+            border-bottom: 5px solid white;
+        }
+        p{
+            color:bisque;
+            font-family:Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 50px;
+            margin-bottom: 30px; 
+            margin-left: 500px;
+        }
+        .coin-button{
+            background-color: black;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            margin-right: 20px; 
+            margin-left: 500px;
+        }
+        .tailbtn{
+            margin-left: 0px;
+        }
+        .move-img{
+            height: 80px;
+            border-radius: 50px;
+            overflow:hidden;
+        }
+        .reset-button{
+            width: 120px;
+            height: 50px;
+            background-color: black;
+            color:white;
+            border: 5px solid white;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            margin-right: 20px; 
+            margin-left: 500px;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Heads and Tails</h1><br>
+    <p class="first">Predict the coin side</p>
+    <button onclick="playermove('head')" class="coin-button"><img src="images/head.jpeg" class="move-img"></button>
+    <button class="tailbtn coin-button" onclick="playermove('tail')" ><img src="images/tail.jpeg" class="move-img"></button>
+    <p>Result: </p>
+    <p class="js-urresult"></p>
+    <p class="js-compare"></p>
+    <p class="js-results"></p>
+    <button onclick="resetscore()" class="reset-button">Reset</button>
+    <script>
+        let coinside;
+        let score={
+            win: 0,
+            lose: 0
+        }
+        let scorer=JSON.parse(localStorage.getItem('score'));
+        if(scorer){
+            score=scorer;
+            updatescore();
+        }
+        const result=document.querySelector('.js-urresult');
+        function playermove(predict){
+            cointoss();
+            if(predict===coinside){
+                result.innerText='You Win';
+                score.win++;
+            }
+            else{
+                result.innerText='You Lose';
+                score.lose++;
+            }
+            document.querySelector('.js-compare').innerHTML=`You - <img src="images/${predict}.jpeg" class="move-img"> <img src="images/${coinside}.jpeg" class="move-img">- Coin`;
+            updatescore();
+        }
+
+        function cointoss(){
+            const coin=Math.random();
+            if(coin<=0.5){
+                coinside='head';
+            }
+            else{
+                coinside='tail';
+            }
+            return coinside;
+        }
+        function updatescore(){
+            document.querySelector('.js-results').innerText=`Wins: ${score.win} Loses: ${score.lose}`;
+            localStorage.setItem('score',JSON.stringify(score));
+        }
+        function resetscore(){
+            score.win=0;
+            score.lose=0;
+            updatescore();
+        }
+    </script>
+</body>
+</html>
