@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url("images/mathe.jpg");
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 0px;
+            margin: 0px;
+            height: 50px;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ma {
+            padding: 40px;
+            background-color: rgba(248, 248, 248, 0.252);
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 250px;
+            height: 20px;
+            border-radius: 10px;
+        }
+        button {
+            font-size: large;
+            background-color: black;
+            color: aliceblue;
+            font-style: italic;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 30px;
+            border-top: 5px solid;
+            border-bottom: 5px solid;
+            color: black;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>CALCULATOR</h1><br><br>
+
+    <div class="container">
+        <div class="ma">
+            <div class="input-container">
+                <label for="numberone" class="num12">Enter the number 1: </label>
+                <input type="number" id="num1" name="numberone">
+            </div>
+            <div class="input-container">
+                <label for="symbol" class="num22">Enter the symbol(+,-,*,/,%) : </label>
+                <input type="text" id="sym" name="symbol">
+            </div>
+            <div class="input-container">
+                <label for="numbertwo" class="num32">Enter the number 2: </label>
+                <input type="number" id="num2" name="numbertwo">
+            </div>
+            <button onclick="submit()">Submit</button>
+            <div>
+                <p id="changecon"><b>Result:  </b>_blank_</p>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!-- Explanation:
+HTML:
+DOCTYPE and Basic Tags:
+
+Declares the document type (<!DOCTYPE html>), language (lang="en"), and character set (<meta charset="UTF-8">).
+Sets the viewport for responsive design (<meta name="viewport" content="width=device-width, initial-scale=1.0">).
+Styles and Scripts:
+
+CSS is embedded within a <style> tag in the <head> section.
+External JavaScript is linked at the end of the body (<script src="app.js"></script>).
+Content Structure:
+
+The main content includes a centered heading (<h1>Calculator</h1>).
+A div with class container to center the content vertically and horizontally.
+Inside container, another div with class ma holds the form elements.
+Input Containers:
+
+Each label and input pair is wrapped in a div with class input-container, which helps in centering them.
+Button and Result:
+
+A button with an onclick attribute to handle submission.
+A p element to display the result, initially set to "blank".
+CSS:
+Body:
+
+Sets the background image, centering, and size.
+Ensures the full height of the viewport and removes default margins.
+Header (h1):
+
+Centers the text, sets the background color to black, text color to white, and ensures no margins or padding.
+Sets a fixed height of 50px.
+Container:
+
+Uses Flexbox (display: flex) to center its content both vertically and horizontally (align-items: center, justify-content: center).
+Adjusts its height to account for the header height.
+Form Container (.ma):
+
+Adds padding, background color, width, border-radius, and centers text.
+Input Containers:
+
+Uses Flexbox to align items in a column and center them (flex-direction: column, align-items: center).
+Adds margin at the bottom for spacing.
+Labels and Inputs:
+
+Sets font size for labels and adjusts the margin for spacing.
+Specifies width and height for input fields.
+Button:
+
+Styles the button with font size, background color, text color, italic font style, padding, border, border-radius, and cursor style.
+Result (p):
+
+Styles the paragraph for the result with font size, top and bottom borders, text color, margin, and padding.
+This structure and styling ensure that the form elements are neatly centered within the ma div, providing a clean and user-friendly interface. -->
